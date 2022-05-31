@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DRAW IT</title>
+
+    <link rel="stylesheet" href="./css/master.css" />
+  </head>
+  <body>
+    <canvas id="cvs"></canvas>
+
+    <div class="nav">
+      <div class="colors">
+        <div class="clr" data-clr="#000"></div>
+        <div class="clr" data-clr="#EF626C"></div>
+        <div class="clr" data-clr="#24d102"></div>
+        <div class="clr" data-clr="#1e90ff"></div>
+        <div class="clr" data-clr="#fdec03"></div>
+        <div class="clr" data-clr="#fff"></div>
+      </div>
+
+      <div class="buttons">
+        <button class="clear">clear</button>
+        <button class="save">save</button>
+      </div>
+    </div>
+
+    <div class="special_btn">
+      <button id="theme-btn" onclick="changeBackground()">theme</button>
+    </div>
+  </body>
+
+  <script src="./js/main.js"></script>
+</html>
