@@ -14,12 +14,18 @@ let draw = false;
 
 let clrs = document.querySelectorAll('.clr');
 clrs = Array.from(clrs);
+ctx.lineWidth = 5;
 
 clrs.forEach(clr =>{
   clr.addEventListener("click", ()=>{
     ctx.strokeStyle = clr.dataset.clr;
   });
 });
+
+document.querySelector('.ersr').addEventListener('click', ()=>{
+  ctx.lineWidth = 30;
+  ctx.strokeStyle = canvas.style.backgroundColor;
+})
 
 ctx.lineWidth = 5;
 
@@ -53,13 +59,15 @@ document.querySelector('.clear').addEventListener('click', (e)=>{
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
-document.querySelector('.save').addEventListener("click", (e)=>{
-  let data = canvas.toDataURL('imag/png');
+document.querySelector('.save-jpeg').addEventListener("click", (e)=>{
+  let data = canvas.toDataURL('image/jpeg');
   let a = document.createElement('a');
   a.href = data;
-  a.download = "sketch.png";
+  a.download = "sketch.jpeg";
   a.click();
 })
+
+document.querySelector('.save-png').addEventListener('click', (e))
 
 function changeBackground(){
   console.log(canvas.style.backgroundColor);

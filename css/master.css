@@ -6,7 +6,7 @@
 }
 
 .nav{
-  width: 30em;
+  width: 30%;
   height: 5em;
   
   position: fixed;
@@ -67,6 +67,31 @@
   background-color: #fff;
 }
 
+.eraser{
+  width: 2em;
+  height: 2em;
+
+}
+
+.ersr{
+  min-width: 2em;
+  max-width: 2em;
+  
+  min-height: 2em;
+  max-height: 2em;
+  
+  background-image: url('./../res/eraser.jpg');
+  background-size: cover;
+
+  transition: transform .5s;
+  /* background: red; */
+  /* border: 1px solid black; */
+}
+
+.ersr:hover{
+  transform: scale(1.2);
+}
+
 button{
   border: none;
   outline: none;
@@ -86,7 +111,7 @@ button{
   transition: transform .5s;
 }
 
-button:hover{
+.buttons button:hover{
   font-weight: bold;
   transform: scale(1.1);
 }
@@ -103,8 +128,6 @@ button.save{
   position: absolute;
   bottom: 2em;
   right: 2em;
-
-  opacity: .7;
 }
 
 button#theme-btn{
@@ -113,4 +136,8 @@ button#theme-btn{
 
   color: white;
   background: black;
+}
+
+#theme-btn:hover{
+  cursor: pointer;
 }
