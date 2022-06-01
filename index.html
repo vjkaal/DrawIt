@@ -7,13 +7,17 @@
     <title>DRAW IT</title>
 
     <link rel="stylesheet" href="./css/master.css" />
+
+    <!-- <script>
+      alert("Note that erasers color(white or black) donot change automatically when theme changes")
+    </script> -->
   </head>
   <body>
     <canvas id="cvs"></canvas>
 
-    <div class="nav">
+    <div class="nav">s
       <div class="colors">
-        <div class="clr" data-clr="#000"></div>
+        <div class="clr" data-clr="#474747"></div>
         <div class="clr" data-clr="#EF626C"></div>
         <div class="clr" data-clr="#24d102"></div>
         <div class="clr" data-clr="#1e90ff"></div>
@@ -26,13 +30,16 @@
       </div>
 
       <div class="buttons">
-        <button class="clear">clear</button>
-        <button class="save">save</button>
+        <div class="clr-btn">
+          <button class="clear">clear</button>
+        </div>
+        <div class="save-png">
+          <button class="save" id="save-png">Save - png</button>
+        </div>
+        <div class="save-jpeg">
+          <button class="save" id="save-jpeg">Save - jpeg</button>
+        </div>
       </div>
-    </div>
-
-    <div class="special_btn">
-      <button id="theme-btn" onclick="changeBackground()">theme</button>
     </div>
   </body>
 

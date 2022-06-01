@@ -1,9 +1,11 @@
 const canvas = document.querySelector('canvas');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-canvas.style.backgroundColor = "white";
+canvas.style.backgroundColor = "black";
 
 const ctx = canvas.getContext('2d');
+ctx.lineCap = 'round';
+ctx.lineJoin = "bevel";
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(100, 100, 100, 100);
@@ -15,28 +17,32 @@ let draw = false;
 let clrs = document.querySelectorAll('.clr');
 clrs = Array.from(clrs);
 ctx.lineWidth = 5;
+ctx.lineCap = 'round';
+ctx.lineJoin = "bevel";
 
-clrs.forEach(clr =>{
-  clr.addEventListener("click", ()=>{
+clrs.forEach(clr => {
+  clr.addEventListener("click", () => {
+    ctx.lineWidth = 5;
     ctx.strokeStyle = clr.dataset.clr;
   });
 });
 
-document.querySelector('.ersr').addEventListener('click', ()=>{
+document.querySelector('.ersr').addEventListener('click', () => {
   ctx.lineWidth = 30;
   ctx.strokeStyle = canvas.style.backgroundColor;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = "round";
 })
 
-ctx.lineWidth = 5;
 
-window.addEventListener('mouseup', (e)=>{draw = false;})
-window.addEventListener('mousedown', (e)=>{draw = true;})
+window.addEventListener('mouseup', (e) => { draw = false; })
+window.addEventListener('mousedown', (e) => { draw = true; })
 
-window.addEventListener('mousemove', (e)=>{
+window.addEventListener('mousemove', (e) => {
   // console.log('mouse x: ' + e.clientX);
   // console.log('mouse y: ' + e.clientY);
 
-  if(prevX == null || prevY == null || !draw){
+  if (prevX == null || prevY == null || !draw) {
     prevX = e.clientX;
     prevY = e.clientY;
     return;
@@ -47,6 +53,9 @@ window.addEventListener('mousemove', (e)=>{
   ctx.beginPath();
 
   ctx.moveTo(prevX, prevY);
+
+  ctx.quadraticCurveTo(prevX, prevY, currX, currY);
+
   ctx.lineTo(currX, currY);
   ctx.stroke();
 
@@ -55,11 +64,11 @@ window.addEventListener('mousemove', (e)=>{
 })
 
 
-document.querySelector('.clear').addEventListener('click', (e)=>{
+document.querySelector('.clear').addEventListener('click', (e) => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 })
 
-document.querySelector('.save-jpeg').addEventListener("click", (e)=>{
+document.querySelector('.save-jpeg').addEventListener("click", (e) => {
   let data = canvas.toDataURL('image/jpeg');
   let a = document.createElement('a');
   a.href = data;
@@ -67,20 +76,10 @@ document.querySelector('.save-jpeg').addEventListener("click", (e)=>{
   a.click();
 })
 
-document.querySelector('.save-png').addEventListener('click', (e))
-
-function changeBackground(){
-  console.log(canvas.style.backgroundColor);
-  let btn = document.querySelector('#theme-btn');
-  
-  if(canvas.style.backgroundColor === "white"){
-    canvas.style.backgroundColor ="black";
-    btn.style.background = 'white';
-    btn.style.color = 'black';
-  }
-  else{
-    canvas.style.backgroundColor = "white";
-    btn.style.background = 'black';
-    btn.style.color = 'white';
-  }
-}
+document.querySelector('#save-png').addEventListener('click', () => {
+  let data = canvas.toDataURL("image/png");
+  let a = document.createElement('a');
+  a.href = data;
+  a.download = "sketch.png";
+  a.click();
+})
